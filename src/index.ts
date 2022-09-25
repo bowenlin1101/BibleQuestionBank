@@ -1,6 +1,6 @@
 import events from 'events';
 import dotenv from "dotenv";
-import {Client, IntentsBitField, REST, Routes, SlashCommandBuilder, EmbedBuilder} from "discord.js"
+import {Client, IntentsBitField, REST, Routes, SlashCommandBuilder, EmbedBuilder, ActivityType} from "discord.js"
 dotenv.config();
 events.EventEmitter.defaultMaxListeners = 15;
 
@@ -13,7 +13,9 @@ const client=new Client({
 
 client.once("ready", () =>{
     console.log("BOT IS ONLINE"); //message when bot is online
+    client.user.setActivity(`/help`, { type: ActivityType.Watching })
 })
+
 
 const commands = [
     new SlashCommandBuilder()
