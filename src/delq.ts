@@ -60,37 +60,28 @@ client.on("interactionCreate", async interaction => {
         .setStyle(ButtonStyle.Danger),
     );
     var id = interaction.customId.split("-")[1]
-        if (id == interaction.user.id) {
-            if (interaction.customId.includes("DQY")) {
-                var index = parseInt(interaction.customId.split("-")[2])
-                databaseFunctions.initQuestions()
-                .then((db) => {
-                    db.all(`SELECT * FROM questions;`, (error, rows) => {
-                        if (error) console.log(error)
-                        else {
-                            (async() => {
-                                db.run(`DELETE FROM questions WHERE question = '${rows[index].question.replace(/'/g,`''`)}';`, (error) => {
-                                    if (error) console.log(error)
-                                    else {
-                                        interaction.update({embeds: [createEmbed("Question Deleted", "delq")], components: [disabled]})
-                                        // interaction
-                                    }
-                                })
-                            })()
-                        }
-                    })
+    if (id == interaction.user.id) {
+        if (interaction.customId.includes("DQY")) {
+            var index = parseInt(interaction.customId.split("-")[2])
+            databaseFunctions.initQuestions()
+            .then((db) => {
+                db.all(`SELECT * FROM questions;`, (error, rows) => {
+                    if (error) console.log(error)
+                    else {
+                        db.run(`DELETE FROM questions WHERE question = '${rows[index].question.replace(/'/g,`''`)}';`, (error) => {
+                            if (error) console.log(error)
+                            else {
+                                interaction.update({embeds: [createEmbed("Question Deleted", "delq")], components: [disabled]})
+                            }
+                        })
+                    }
                 })
-            .catch((error) => {
-                console.log("error")
             })
-            if (interaction.customId.includes("DQN")) {
-                (async() => {
-                    interaction.update({embeds: [createEmbed("Action Cancelled", "delq")], components: [disabled]})
-                })()
-                .catch((error) => {
-                    console.log(error)
-                })
-            }
+        }
+
+        if (interaction.customId.includes("DQN")) {
+            console.log("nope")
+            interaction.update({embeds: [createEmbed("Action Cancelled", "delq")], components: [disabled]})
         }
     }
 })
