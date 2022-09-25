@@ -87,7 +87,6 @@ client.on("interactionCreate", async interaction => {
                         var index = parseInt(interaction.options.getString("index"))
                         var summary = interaction.options.getString("summary")
                         var question = rows[index].question
-                        console.log(question)
                         if (rows[index].summary == "None") {
                             db.run(`UPDATE archives SET summary = '${summary.replace(/'/g,"''")}' WHERE question = '${question.replace(/'/g,"''")}';`, (error) => {
                                 if (error) console.log(error)
@@ -198,7 +197,6 @@ client.on("interactionCreate", async interaction => {
 
     if (interaction.customId.includes("ASY")) {
         var userID = interaction.customId.split('-')[1];
-        console.log(userID)
         if (parseInt(userID) == parseInt(interaction.user.id)){
             var index = interaction.customId.split('-')[2];
             var summaryArray = interaction.customId.split('-').splice(3,3);
