@@ -1,5 +1,5 @@
 import {ActionRowBuilder, ButtonBuilder,ButtonStyle} from "discord.js"
-import botVars from './addq'
+import botVars from './delq'
 import databaseFunctions from './database'
 import dotenv from "dotenv";
 const {client, authorizedChannels, embeds, createEmbed, mapIndex} = botVars
