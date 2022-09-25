@@ -1,6 +1,8 @@
+import events from 'events';
 import dotenv from "dotenv";
 import {Client, IntentsBitField, REST, Routes, SlashCommandBuilder, EmbedBuilder} from "discord.js"
 dotenv.config();
+events.EventEmitter.defaultMaxListeners = 15;
 
 const authorizedChannels = [711972899141189703, 796613531323465738, 791375870442733582];
 const myIntents = new IntentsBitField();
