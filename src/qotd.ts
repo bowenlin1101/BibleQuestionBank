@@ -50,7 +50,7 @@ client.on("interactionCreate", async interaction => {
                                     (async() => {
                                         isQuestionActive = false;
                                         activeQuestion = ""
-                                        await interaction.reply({embeds:[createEmbed(`Summary added: **${summary}**`, rows[index].question)]})
+                                        await interaction.reply({embeds:[createEmbed(`Summary added: **${summary}**`, rows[index].question.slice(0,200))]})
                                     })()
                                 }
                             })
@@ -94,7 +94,7 @@ client.on("interactionCreate", async interaction => {
                                     (async() => {
                                         isQuestionActive = false;
                                         activeQuestion = ""
-                                        await interaction.reply({embeds:[createEmbed(`Summary added: **${summary}**`, rows[index].question)]})
+                                        await interaction.reply({embeds:[createEmbed(`Summary added: **${summary}**`, rows[index].question.slice(0,200))]})
                                     })()
                                 }
                             })
@@ -214,7 +214,7 @@ client.on("interactionCreate", async interaction => {
                             else {
                                 isQuestionActive = false;
                                 activeQuestion = "";
-                                interaction.update({embeds:[createEmbed(`Summary added: **${summary}**`, rows[index].question)], components:[disabled]})
+                                interaction.update({embeds:[createEmbed(`Summary added: **${summary}**`, rows[index].question.slice(0,200))], components:[disabled]})
                             }
                         })
                     }

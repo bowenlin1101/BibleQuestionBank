@@ -12,9 +12,13 @@ client.on("interactionCreate", async interaction => {
                 else {
                     var index = interaction.options.getInteger('archive_index');
                     if (index >=0 && index < rows.length) {
-                        var summaries = rows.map(x => x.summary)
-                        var embed = createEmbed(summaries[index], `Summary: ${rows[index].question}`)
-                        interaction.reply({embeds:[embed]})
+                        (async()=> {
+                            var summaries = rows.map(x => x.summary)
+                            var embed = createEmbed(summaries[index], `Summary: ${rows[index].question.slice(0,200)}`)
+                            console.log(summaries)
+                            console.log(embed)
+                            await interaction.reply({embeds:[embed]})
+                        })()
                     } else {
                         interaction.reply("Index out of bounds")
                     }
