@@ -26,7 +26,7 @@ client.on("interactionCreate", async interaction => {
                     await interaction.reply({embeds:[createEmbed(`Are you sure you want to summon the question?\n Make sure there are people around to discuss!`, "QOTD")], components:[row]})
                 })()  
             } else {
-                await interaction.reply({embeds:[createEmbed(`A question is already active in one of the channels. Check it out! End the discussion session by adding a summary with **/adds** and 'last' as the index`, activeQuestion)]})
+                await interaction.reply({embeds:[createEmbed(`A question is already active in one of the channels. Check it out! End the discussion session by adding a summary with **/adds** and 'last' as the index`, activeQuestion.slice(0,200))]})
             }
         } else {
             await interaction.reply({embeds:[createEmbed(`Only use this command in the channels listed in **/help**`, "QOTD")]})
